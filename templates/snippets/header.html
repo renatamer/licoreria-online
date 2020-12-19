@@ -1,0 +1,86 @@
+<style type="text/css">
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 99;
+}
+</style>
+    <!-- BOOTSTRAP4 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Botón subir -->
+    <button onclick="subir()" id="btnSubir" title="Subir">Al inicio</button>
+    <!-- BARRA NAVEGACION -->
+    <header>
+        <div class="component-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a id="navbar" href="{% url 'home' %}">Licoreria Online</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav">
+
+                        <!-- SI HA INICIADO SESIÓN -->
+                        {% if request.user.is_authenticated %}
+                        <!--saludo-->
+                                <li class="my-0 mr-md-auto font-weight-normal p-2">
+                            <p>Hola, {{request.user.username}}</p>
+                                </li>
+                        <!--fin saludo-->
+                                <li class="nav-item">
+                                    <a class="nav-link enlaces" href="{% url 'account' %}">Cuenta</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link enlaces" href=" ">Catálogo</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link enlaces" href=" ">Contáctanos</a>
+                                </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link active enlaces" href="{% url 'logout' %}">Cerrar sesión</a>
+                                </li>
+                          
+                                
+                        <!-- NO HA INICIADO SESIÓN -->
+                        {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link enlaces" href="{% url 'login' %}">Iniciar sesión</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link enlaces" href="{% url 'register' %}">Registrarse</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link enlaces" href=" ">Catálogo</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link enlaces" href=" ">Contáctanos</a>
+                                </li>
+                        {% endif %}    
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <hr> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  
+
+        <!-- BOOTSTRAP BUNDLE -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin= "anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
